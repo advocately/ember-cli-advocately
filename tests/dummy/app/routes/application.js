@@ -1,19 +1,19 @@
 import Ember from 'ember';
 const { inject: { service } } = Ember;
 
-function identifyUser() {
+function identifyUserForAdvocately() {
   this.get('advocately').identifyUser(1, { name: 'Lachlan Priest' });
 }
 
 export default Ember.Route.extend({
   advocately: service(),
-  identifyUser: null,
+  identifyUserForAdvocately: null,
 
   model(params, transition) {
     if (transition.queryParams.TEST_NO_IDENTIFY) {
-      this.set('identifyUser', null);
+      this.set('identifyUserForAdvocately', null);
     } else {
-      this.set('identifyUser', identifyUser);
+      this.set('identifyUserForAdvocately', identifyUserForAdvocately);
     }
   }
 });

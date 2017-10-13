@@ -15,8 +15,8 @@ export function initialize(appInstance) {
     router.on('didTransition', function() {
       const applicationRoute = owner.lookup('route:application');
 
-      if (applicationRoute && typeof applicationRoute.identifyUser === 'function') {
-        applicationRoute.identifyUser();
+      if (applicationRoute && typeof applicationRoute.identifyUserForAdvocately === 'function') {
+        applicationRoute.identifyUserForAdvocately();
       }
     });
   }

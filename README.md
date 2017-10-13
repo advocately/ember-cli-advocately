@@ -103,7 +103,7 @@ All the parameters you can provide are: `event`, `properties`, `options`, `callb
 
 ### Identifying the User
 
-We will automatically call `identifyUser` method from your `application` route everytime the URL changes. Inside this method, you should call `this.get('advocately').identifyUser` passing the parameters that you want to send to advocately.
+We will automatically call `identifyUserForAdvocately` method from your `application` route everytime the URL changes. Inside this method, you should call `this.get('advocately').identifyUser` passing the parameters that you want to send to advocately.
 
 ```js
 // File: app/routes/application.js
@@ -114,7 +114,7 @@ const { inject: { service } } = Ember;
 export default Ember.Route.extend({
 	advocately: service(),
 
-  identifyUser: function() {
+  identifyUserForAdvocately: function() {
     this.get('advocately').identifyUser(1, { name: 'Lachlan Priest' });
   }
 });
@@ -131,7 +131,7 @@ const { inject: { service } } = Ember;
 export default Ember.Route.extend({
 	advocately: service(),
 
-  identifyUser: function() {
+  identifyUserForAdvocately: function() {
     if (this.get('currentUser')) {
       this.get('advocately').identifyUser(this.get('currentUser.id'), this.get('currentUser')));
     }
