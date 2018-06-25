@@ -1,17 +1,18 @@
-import Ember from 'ember';
 import { initialize } from 'dummy/instance-initializers/advocately';
 import { module, test } from 'qunit';
 import destroyApp from '../../helpers/destroy-app';
+import { run } from '@ember/runloop';
+import Application from '@ember/application';
 
 module('Unit | Instance Initializer | advocately', {
   beforeEach: function() {
-    Ember.run(() => {
-      this.application = Ember.Application.create();
+    run(() => {
+      this.application = Application.create();
       this.appInstance = this.application.buildInstance();
     });
   },
   afterEach: function() {
-    Ember.run(this.appInstance, 'destroy');
+    run(this.appInstance, 'destroy');
     destroyApp(this.application);
   }
 });

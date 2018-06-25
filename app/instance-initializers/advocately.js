@@ -1,9 +1,8 @@
 export function initialize(appInstance) {
   // Support Ember 1.13+
-  const owner = appInstance.lookup ? appInstance : appInstance.container;
-
-  const router = owner.lookup('router:main');
-  const advocately = owner.lookup('service:advocately');
+  const container = appInstance.lookup ? appInstance : appInstance.container;
+  const router = container.lookup('router:main');
+  const advocately = container.lookup('service:advocately');
 
   if (advocately && advocately.pageTrackEnabled()) {
     router.on('didTransition', function() {
@@ -13,7 +12,7 @@ export function initialize(appInstance) {
 
   if (advocately && advocately.identifyUserEnabled()) {
     router.on('didTransition', function() {
-      const applicationRoute = owner.lookup('route:application');
+      const applicationRoute = container.lookup('route:application');
 
       if (applicationRoute && typeof applicationRoute.identifyUserForAdvocately === 'function') {
         applicationRoute.identifyUserForAdvocately();

@@ -1,11 +1,13 @@
-import Ember from 'ember';
-const { inject: { service } } = Ember;
+'use strict';
+
+import { inject as service } from '@ember/service';
+import Route from '@ember/routing/route';
 
 function identifyUserForAdvocately() {
   this.get('advocately').identifyUser(1, { name: 'Lachlan Priest' });
 }
 
-export default Ember.Route.extend({
+export default Route.extend({
   advocately: service(),
   identifyUserForAdvocately: null,
 

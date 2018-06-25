@@ -1,14 +1,14 @@
 /* globals FastBoot */
-import Ember from 'ember';
+import Service from '@ember/service';
 
-export default Ember.Service.extend({
+export default Service.extend({
   init() {
     this._super();
 
     const isFastBoot = typeof FastBoot !== 'undefined';
 
     if (!this.hasAdvocately() && (this.config && this.config.environment !== 'test') && !isFastBoot) {
-      Ember.Logger.warn('Advocate.ly is not loaded yet (window.advocately)');
+      window.console.warn('Advocate.ly is not loaded yet (window.advocately)');
     }
   },
 
@@ -38,7 +38,7 @@ export default Ember.Service.extend({
 
   log() {
     if (this.config && this.config.advocately && this.config.advocately.LOG_EVENT_TRACKING) {
-      Ember.Logger.info('[Advocately.ly] ', arguments);
+      window.console.info('[Advocate.ly] ', arguments);
     }
   },
 

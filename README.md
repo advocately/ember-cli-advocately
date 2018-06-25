@@ -46,12 +46,11 @@ The addon exposes a service that you can inject in routes, components and more.
 
 ```js
 // app/components/some-awsome-component.js
-import Ember from 'ember';
+import { inject as service } from '@ember/service';
+import { Component } from '@ember/component';
 
-const { inject: { service } } = Ember;
-
-export default Ember.Component.extend({
-  advocately: Ember.inject.service()
+export default Component.extend({
+  advocately: service()
 });
 
 ```
@@ -77,11 +76,11 @@ Let's say that you need to track an event when the user submits an form in your 
 
 ```js
 // File: app/routes/posts/new.js
-import Ember from 'ember'
+import { inject as service } from '@ember/service';
 
-const { inject: { service } } = Ember;
+import Route from '@ember/routing/route';
 
-export default Ember.Route.extend({
+export default Route.extend({
 	advocately: service(),
 
   actions: {
@@ -107,11 +106,10 @@ We will automatically call `identifyUserForAdvocately` method from your `applica
 
 ```js
 // File: app/routes/application.js
-import Ember from 'ember';
+import { inject as service } from '@ember/service';
 
-const { inject: { service } } = Ember;
-
-export default Ember.Route.extend({
+import Route from '@ember/routing/route';
+export default Route.extend({
 	advocately: service(),
 
   identifyUserForAdvocately: function() {
@@ -124,11 +122,10 @@ You should have in mind that you should make a conditional validation to check i
 
 
 ```js
-import Ember from 'ember';
+import { inject as service } from '@ember/service';
+import Route from '@ember/routing/route';
 
-const { inject: { service } } = Ember;
-
-export default Ember.Route.extend({
+export default Route.extend({
 	advocately: service(),
 
   identifyUserForAdvocately: function() {
